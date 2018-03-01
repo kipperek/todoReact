@@ -11,6 +11,7 @@ class TodoListController extends Component {
     super();
     this.editTodo = this.editTodo.bind(this);
     this.markTodo = this.markTodo.bind(this);
+    this.state = { items: [] };
   }
 
   editTodo (item) {
@@ -24,9 +25,24 @@ class TodoListController extends Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ items: nextProps.items.sort( (a,b) => {
+        if ( a.stringRepresent.toLowerCase() < b.stringRepresent.toLowerCase() )
+          return -1;
+        if ( a.stringRepresent.toLowerCase() > b.stringRepresent.toLowerCase() )
+          return 1;
+
+        return 0;
+      })
+    });
+  }
+
   render() {
     return (
-      <TodoList items={this.props.items} editTodo={this.editTodo} markTodo={this.markTodo}/>
+      <div>
+        <TodoList items={this.state.items} editTodo={this.editTodo} markTodo={this.markTodo}/>
+        <TodoList showDone={true} items={this.state.items} editTodo={this.editTodo} markTodo={this.markTodo}/>
+      </div>
     );
   }
 }

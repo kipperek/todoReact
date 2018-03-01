@@ -18,8 +18,6 @@ const todoReducer = function(state = initialState, action) {
           item.done = !item.done;
         }
         return item;
-      }).sort((item) => {
-        return item.done ? 1 :0;
       });
 
       return Object.assign({}, state, { todoList: newList });
