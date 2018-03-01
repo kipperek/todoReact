@@ -12,12 +12,16 @@ class AddTodoController extends Component {
     this.addTodo = this.addTodo.bind(this);
   }
 
-  addTodo () {
+  addTodo (e) {
+    e.preventDefault();
     if(!this.state.newTodo) return;
     store.dispatch({
       type: todoActions.ADD_TODO,
       item: this.state.newTodo
     });
+
+    this.setState({newTodo: ''});
+    this.inputElement.focus();
   }
 
   handleChange (e) {
@@ -26,7 +30,7 @@ class AddTodoController extends Component {
 
   render() {
     return (
-      <AddTodo add={this.addTodo} handleChange={this.handleChange} newtodo={this.state.newTodo}/>
+      <AddTodo add={this.addTodo} handleChange={this.handleChange} newtodo={this.state.newTodo} inputRef={el => this.inputElement = el}/>
     );
   }
 }

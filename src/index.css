@@ -2,4 +2,45 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #f7f7f7;
+}
+
+.flex-container{
+  display: -moz-box;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -moz-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.flex-column{
+  -moz-flex-flow: column;
+  -ms-flex-flow: column;
+  -webkit-flex-flow: column;
+  flex-flow: column;
+}
+
+.flex-big{
+  -moz-box-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  -moz-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  position: relative;
+}
+
+.flex-no-shrink{
+  -moz-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
 }

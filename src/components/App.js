@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import logo from '../logo.svg';
-// import './App.css';
+import './App.css';
 
 import TodoListController from './TodoList/todoListController';
 import AddTodoController from './AddTodo/addTodoController';

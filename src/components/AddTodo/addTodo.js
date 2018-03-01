@@ -4,8 +4,10 @@ class AddTodo extends Component {
   render() {
     return (
       <div>
-        <input type="text" value={this.props.newtodo} onChange={this.props.handleChange}/>
-        <button onClick={this.props.add}>Dodej</button>
+        <form onSubmit={this.props.add}>
+          <input type="text" value={this.props.newtodo} onChange={this.props.handleChange} ref={this.props.inputRef}/>
+          <input value="Dodej" type="submit" />
+        </form>
       </div>
 
     );
