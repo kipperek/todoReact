@@ -11,10 +11,15 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 // import UserProfileContainer from './components/containers/user-profile-container';
 // import WidgetListContainer from './components/containers/widget-list-container';
 import App from './components/App';
+import Todo from './components/Todo/todo';
+import EditTodoController from './components/EditTodo/editTodoController';
 
 
 export default (
   <Router history={browserHistory}>
-    <Route path="/" component={App} />
+    <Route path="/" component={App}>
+      <IndexRoute component={Todo}/>
+      <Route path="edit/:todoId" component={EditTodoController} />
+    </Route>
   </Router>
 );

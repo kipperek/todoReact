@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import TodoListController from './TodoList/todoListController';
-import AddTodoController from './AddTodo/addTodoController';
-
-
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <TodoListController/>
-        <AddTodoController/>
+        {this.props.children}
       </div>
     );
   }

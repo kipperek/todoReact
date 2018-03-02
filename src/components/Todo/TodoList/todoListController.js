@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import TodoList from './todoList';
 import { connect } from 'react-redux';
 import './todoList.css';
-import store from '../../store';
-import * as todoActions from '../../services/actions/todo';
+import store from '../../../store';
+import * as todoActions from '../../../services/actions/todo';
+import { browserHistory } from 'react-router';
 
 class TodoListController extends Component {
 
@@ -15,7 +16,7 @@ class TodoListController extends Component {
   }
 
   editTodo (item) {
-    console.log(item);
+    browserHistory.push('/edit/'+item.id);
   }
 
   markTodo (item) {
@@ -25,8 +26,8 @@ class TodoListController extends Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ items: nextProps.items.sort( (a,b) => {
+  updateItems (state){
+    this.setState({ items: state.items.sort( (a,b) => {
         if ( a.stringRepresent.toLowerCase() < b.stringRepresent.toLowerCase() )
           return -1;
         if ( a.stringRepresent.toLowerCase() > b.stringRepresent.toLowerCase() )
@@ -35,6 +36,14 @@ class TodoListController extends Component {
         return 0;
       })
     });
+  }
+
+  componentDidMount() {
+    this.updateItems(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.updateItems(nextProps);
   }
 
   render() {

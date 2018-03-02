@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddTodo from './addTodo';
-import store from '../../store';
-import * as todoActions from '../../services/actions/todo';
+import store from '../../../store';
+import * as todoActions from '../../../services/actions/todo';
 
 class AddTodoController extends Component {
 
