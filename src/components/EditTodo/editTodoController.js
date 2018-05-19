@@ -20,7 +20,7 @@ class EditTodoController extends Component {
 
   componentDidMount() {
     try{
-      let id = parseInt(this.props.routeParams.todoId);
+      let id = parseInt(this.props.routeParams.todoId, 10);
       if(isNaN(id)) throw 'Invalid parameter';
 
       let todo = this.props.todoList.find((item) => item.id === id);
